@@ -1,5 +1,6 @@
 class RedirectionsController < ApplicationController
   def index
+    @redirections = Redirection.all
   end
 
   def new
