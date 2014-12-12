@@ -1,9 +1,20 @@
-<%= form_for @redirection do |f| %>
-  <%= f.label "Route", :route %>
-  <%= f.text_field :route %>
+<div class="row">
+  <div class="col-lg-2 col-lg-offset-5">
+    <%= form_for @redirection, html: { role: "form" } do |f| %>
+      <div class="form-group">
+        <%= f.label "Route", :route %>
+        <%= f.text_field :route, class: "form-control" %>
+      </div>
 
-  <%= f.label "Redirects to", :redirect %>
-  <%= f.text_field :redirect %>
+      <div class="form-group">
+        <%= f.label "Redirects to", :redirect %>
+        <%= f.text_field :redirect, class: "form-control" %>
+      </div>
 
-  <%= f.submit "Create Redirection" %>
-<% end %>
+      <div class="form-group">
+        <%= f.submit "Create Redirection", class: "btn btn-default" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

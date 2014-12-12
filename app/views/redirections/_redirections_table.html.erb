@@ -1,12 +1,16 @@
-<table>
-  <tr>
-    <th>Route</th>
-    <th>Redirect to URL</th>
-  </tr>
-  <% @redirections.each do |r| %>
-    <tr>
-      <td><%= link_to "#{r.route}", "#{r.route}", data: { no_turbolink: true } %></td>
-      <td><%= r.redirect %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">  
+  <div class="col-lg-4 col-lg-offset-4">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <th>Route</th>
+        <th>Redirect to URL</th>
+      </tr>
+      <% @redirections.each do |r| %>
+        <tr>
+          <td><%= link_to "#{r.route}", "#{r.route}", data: { no_turbolink: true } %></td>
+          <td><%= r.redirect %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
