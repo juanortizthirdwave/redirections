@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
+
   # You can have the root of your site routed with "root"
-  root 'redirections#index'
+  root 'redirections#new'
   
   get 'static_pages/redirect_1'
 
   get 'static_pages/redirect_2'
 
   get 'static_pages/redirect_3'
-
-  get 'redirections/index'
 
   resources :redirections
 
@@ -43,7 +42,7 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
 
-  # Example resource route with more complex sub-resources:
+  # Example resource route with more complex sub-resources:key => "value", 
   #   resources :products do
   #     resources :comments
   #     resources :sales do
