@@ -1,12 +1,7 @@
-<h1>Redirections#new</h1>
-<p>Find me in app/views/redirections/new.html.erb</p>
+<div class=".col-xs-4 .col-xs-offset-4">
+  <h1>Redirections#new</h1>
+  <p>Find me in app/views/redirections/new.html.erb</p>
 
-  <%= form_for @redirection do |f| %>
-    <%= f.label "Route", :route %>
-    <%= f.text_field :route %>
-
-    <%= f.label "Redirects to", :redirect %>
-    <%= f.text_field :redirect %>
-
-    <%= f.submit "Create Redirection" %>
-  <% end %>
+    <%= render "new_redirection_form" %>
+    <%= render "redirections_table" %>
+</div>

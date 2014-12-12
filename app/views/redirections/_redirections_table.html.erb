@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Route</th>
+    <th>Redirect to URL</th>
+  </tr>
+  <% @redirections.each do |r| %>
+    <tr>
+      <td><%= link_to "#{r.route}", "#{r.route}", data: { no_turbolink: true } %></td>
+      <td><%= r.redirect %></td>
+    </tr>
+  <% end %>
+</table>

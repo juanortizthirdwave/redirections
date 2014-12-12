@@ -1,0 +1,9 @@
+<%= form_for @redirection do |f| %>
+  <%= f.label "Route", :route %>
+  <%= f.text_field :route %>
+
+  <%= f.label "Redirects to", :redirect %>
+  <%= f.text_field :redirect %>
+
+  <%= f.submit "Create Redirection" %>
+<% end %>
