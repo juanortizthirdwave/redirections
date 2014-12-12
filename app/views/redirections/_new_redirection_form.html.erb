@@ -2,12 +2,14 @@
   <div class="col-lg-2 col-lg-offset-5">
     <%= form_for @redirection, html: { role: "form" } do |f| %>
       <div class="form-group">
-        <%= f.label "Route", :route %>
+        <%= f.label :route, "This Route" %>
+        <span class="glyphicon glyphicon-arrow-right"></span>
         <%= f.text_field :route, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label "Redirects to", :redirect %>
+        <span class="glyphicon glyphicon-arrow-right"></span>
+        <%= f.label :redirect, "will redirect to this other route" %>
         <%= f.text_field :redirect, class: "form-control" %>
       </div>
 
