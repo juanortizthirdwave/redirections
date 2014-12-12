@@ -64,3 +64,12 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+routes = Rails.application.routes
+routes.disable_clear_and_finalize = true
+
+Redirection.all.each do |r|
+  routes.draw { get "#{r.route}", to: redirect("#{r.redirect}") }
+end
+# ActiveSupport.on_load(:action_controller) { routes.finalize! }
+routes.disable_clear_and_finalize = false
