@@ -63,13 +63,16 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '*route', to: 'redirections#fallback'
 end
 
-routes = Rails.application.routes
-routes.disable_clear_and_finalize = true
+# Uncomment this when you want to use the fallback method
+# routes = Rails.application.routes
+# routes.disable_clear_and_finalize = true
 
-Redirection.all.each do |r|
-  routes.draw { get "#{r.route}", to: redirect("#{r.redirect}") }
-end
-# ActiveSupport.on_load(:action_controller) { routes.finalize! }
-routes.disable_clear_and_finalize = false
+# Redirection.all.each do |r|
+#   routes.draw { get "#{r.route}", to: redirect("#{r.redirect}") }
+# end
+# # ActiveSupport.on_load(:action_controller) { routes.finalize! }
+# routes.disable_clear_and_finalize = false
+# ==============================================================
