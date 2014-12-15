@@ -4,11 +4,13 @@
       <tr>
         <th>Original Route</th>
         <th>Target Route</th>
+        <th>Status</th>
       </tr>
       <% @redirections.each do |r| %>
         <tr>
           <td><%= link_to "#{r.route}", "#{r.route}", data: { no_turbolink: true } %></td>
           <td><%= r.redirect %></td>
+          <td><%= r.status %></td>
         </tr>
       <% end %>
     </table>

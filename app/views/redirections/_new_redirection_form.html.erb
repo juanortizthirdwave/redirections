@@ -14,6 +14,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :status, "Status" %>
+        <%= f.select :status, [ 301, 302,307 ] %>
+      </div>
+
+      <div class="form-group">
         <%= f.submit "Create Redirection", class: "btn btn-default" %>
       </div>
 
