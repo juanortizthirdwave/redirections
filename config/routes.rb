@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  # fallback route
   get '*route', to: 'redirections#fallback'
 end
 
@@ -75,4 +77,4 @@ end
 # end
 # # ActiveSupport.on_load(:action_controller) { routes.finalize! }
 # routes.disable_clear_and_finalize = false
-# ==============================================================
+# --------------------------------------------------------------

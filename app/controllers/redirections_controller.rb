@@ -35,8 +35,8 @@ class RedirectionsController < ApplicationController
     query_string = "/" + params[:route]
     redirection = Redirection.find_by_route(query_string)
     if redirection
-      redirection_string = Redirection.redirection.redirect
-      status = redirection.status | 301
+      redirection_string = redirection.redirect
+      status = redirection.status || 301
       redirect_to redirection_string, status: status
     else
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
