@@ -9,23 +9,38 @@ class RedirectionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @redirection = Redirection.create(redirection_params)
 
     redirect = @redirection.redirect
     route = @redirection.route
 
-    begin
-      routes = CustomRedirection::Application.routes
-      routes.disable_clear_and_finalize = true
-      # routes.clear!
-      # CustomRedirection::Application.routes_reloader.paths.each{ |path| load(path) }
-      routes.draw { get "#{route}", to: redirect("#{redirect}") }
-      ActiveSupport.on_load(:action_controller) { routes.finalize! }
-    ensure
-      routes.disable_clear_and_finalize = false
-    end
+    # Uncomment this when you want to use the fallback method
+    # begin
+    #   routes = CustomRedirection::Application.routes
+    #   routes.disable_clear_and_finalize = true
+    #   # routes.clear!
+    #   # CustomRedirection::Application.routes_reloader.paths.each{ |path| load(path) }
+    #   routes.draw { get "#{route}", to: redirect("#{redirect}") }
+    #   ActiveSupport.on_load(:action_controller) { routes.finalize! }
+    # ensure
+    #   routes.disable_clear_and_finalize = false
+    # end
+    # ==============================================================
 
     redirect_to new_redirection_path
+  end
+
+  def fallback
+    query_string = "/" + params[:route]
+    redirection = Redirection.find_by_route(query_string)
+    if redirection
+      redirection_string = Redirection.redirection.redirect
+      status = redirection.status | 301
+      redirect_to redirection_string, status: status
+    else
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
   end
 
   def edit
@@ -43,7 +58,7 @@ class RedirectionsController < ApplicationController
   private 
 
   def redirection_params
-    params.require(:redirection).permit(:route, :redirect)
+    params.require(:redirection).permit(:route, :redirect, :status)
   end
 
 end
